@@ -78,6 +78,82 @@ F1_Project/
 ```
 
 
+---
+
+## 📁 Detailed Folder & File Guide
+
+This section explains the purpose of each folder and key file so the project is easy to navigate, even for beginners.
+
+### `data/`
+Contains all datasets used in the project.
+
+- **`data/raw/`**
+  - `race_results_2025.csv`  
+    Raw race-level results for the 2025 season (positions, grid, points).
+  - `qualifying_results_2025.csv`  
+    Qualifying session data including grid position and delta to pole.
+  - `cache/`  
+    Local FastF1 cache used to speed up data fetching (ignored by Git).
+
+- **`data/processed/`**
+  - `form_features_2025.csv`  
+    Final engineered dataset containing driver form, team momentum, and qualifying features used for modeling.
+
+---
+
+### `notebooks/`
+Contains analysis notebooks.
+
+- **`01-form_eda_2025.ipynb`**  
+  Exploratory Data Analysis notebook.  
+  Used to validate assumptions, visualize trends, and confirm that engineered features capture meaningful racing behavior.
+
+---
+
+### `src/`
+Houses all production-style Python scripts.
+
+#### `src/features/`
+- **`driver_team_form.py`**  
+  Builds rolling driver and team form features (last 5 races), ensuring no data leakage by using only past information.
+
+---
+
+#### `src/models/`
+Contains all modeling scripts.
+
+- **`baseline_points.py`**  
+  Linear regression baseline using form and qualifying features.
+- **`tree_baseline_points.py`**  
+  Decision tree model to capture non-linear relationships.
+- **`gbm_points.py`**  
+  Final Gradient Boosting model used for evaluation and comparison.
+- **`interpret_baseline.py`**  
+  Interprets linear model coefficients for explainability.
+- **`gbm_feature_importance.py`**  
+  Extracts and displays feature importance from the GBM model.
+
+---
+
+#### `src/fetch_race_data.py`
+Fetches race results for the 2025 season using FastF1 and saves them to `data/raw/`.
+
+#### `src/fetch_qualifying.py`
+Fetches qualifying session data and qualifying pace metrics for the 2025 season.
+
+---
+
+### Root-level files
+
+- **`.gitignore`**  
+  Specifies files and folders that should not be tracked (virtual environment, cache, checkpoints).
+- **`requirements.txt`**  
+  Lists all Python dependencies required to run the project.
+- **`README.md`**  
+  Project documentation explaining the motivation, structure, and usage of the repository.
+
+---
+
 ## ⚙️ Setup Instructions
 
 1. Clone the repository
