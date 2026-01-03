@@ -45,6 +45,7 @@ All data is cached locally to ensure reproducibility.
 
 ## 🗂️ Project Structure
 
+```
 F1_Project/
 ├── data/
 │   ├── raw/
@@ -53,24 +54,29 @@ F1_Project/
 │   │   └── cache/
 │   └── processed/
 │       └── form_features_2025.csv
+│
 ├── notebooks/
 │   └── 01-form_eda_2025.ipynb
+│
 ├── src/
 │   ├── features/
 │   │   └── driver_team_form.py
+│   │
 │   ├── models/
 │   │   ├── baseline_points.py
 │   │   ├── tree_baseline_points.py
 │   │   ├── gbm_points.py
 │   │   ├── interpret_baseline.py
 │   │   └── gbm_feature_importance.py
+│   │
 │   ├── fetch_race_data.py
 │   └── fetch_qualifying.py
+│
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
----
 
 ## ⚙️ Setup Instructions
 
